@@ -15,9 +15,9 @@ public class getPopDensData extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	String finalUrl;
-	Vector<Double> popDensList;
-	Vector<Double> carbonEmList;
+	public String finalUrl;
+	public Vector<Double> popDensList;
+
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -33,7 +33,7 @@ public class getPopDensData extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getPopDens(String finalUrl) {
+	public Vector<Double> getPopDens(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -80,7 +80,7 @@ public class getPopDensData extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return cumu;
+		return popDensList;
 	}
 	
 	public static void main(String[] args) {

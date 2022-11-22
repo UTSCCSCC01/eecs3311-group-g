@@ -1,6 +1,6 @@
 package dataGetters;
 public class dataFactory extends baseDataGetter{
-	public baseDataGetter createdataGetter(int dataType, String code, String y1, String y2)
+	public static baseDataGetter createdataGetter(int dataType, String code, String y1, String y2)
     {
         if (dataType == 0)
             return null;
