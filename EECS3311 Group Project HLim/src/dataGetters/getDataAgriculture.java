@@ -1,22 +1,23 @@
 package dataGetters;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.*;
-import org.jfree.data.json.impl.JSONArray;
+import java.util.Scanner;
+import java.util.Vector;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
-
-public class getFFUseData extends baseDataGetter{
+public class getDataAgriculture extends baseDataGetter{
 	String urlP1 = "http://api.worldbank.org/v2/country/";
 	String countryCode;
-	String urlP3 = "/indicator/EG.USE.COMM.FO.ZS?date=";
+	String urlP3 = "/indicator/AG.LND.AGRI.ZS?date=";
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
 	String finalUrl;
-	Vector<Double> FFuseList;
+	Vector<Double> dataAgriculture;
 	Vector<Double> carbonEmList;
 	
 	public String setFinalUrl() {
@@ -33,7 +34,7 @@ public class getFFUseData extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getFFUsage(String finalUrl) {
+	public String getDataAgricPerc(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -67,13 +68,13 @@ public class getFFUseData extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.FFuseList.add(landPerArea);
+				this.dataAgriculture.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
-		 cumu= cumu+String.format("Fossil Fuel used as percentage %.2f for the year %d\n", landPerArea, landPerYear);
+		 cumu= cumu+String.format("Percent of people able to access clean water %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
 			}
 			//System.out.println("size of results is  "+sizeofResults);
-			cumu=cumu+String.format("Average npercent usage of Fossil fuel %.2f\n",cumuPerYear/sizeofResults);
+			cumu=cumu+String.format("Average number of people with accesss to clean water %.2f\n",cumuPerYear/sizeofResults);
 			//System.out.printf("Average land per Area is %.2f", cumuPerYear/sizeofResults);
 		}
 		}
@@ -81,21 +82,6 @@ public class getFFUseData extends baseDataGetter{
 			// excception is catched if something goes wrong
 		}
 		return cumu;
-	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getFFUseData dataFetch = new getFFUseData();
-		dataFetch.setCC("can");
-		dataFetch.setY1("2007");
-		dataFetch.setY2("2013");
-		dataFetch.setFinalUrl();
-		
-		dataFetch.FFuseList = new Vector<Double>();
-		
-		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getFFUsage(dataFetch.finalUrl));
-		
 	}
 
 }

@@ -8,7 +8,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 
-public class getDataGDPGrowth {
+public class getDataGDPGrowth extends baseDataGetter{
 	String urlP1 = "http://api.worldbank.org/v2/country/";
 	String countryCode;
 	String urlP3 = "/indicator/NY.GDP.MKTP.KD.ZG?date=";

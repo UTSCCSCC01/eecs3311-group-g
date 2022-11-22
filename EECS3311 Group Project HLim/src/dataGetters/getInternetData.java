@@ -8,7 +8,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 
-public class getInternetData {
+public class getInternetData extends baseDataGetter{
 	String urlP1 = "http://api.worldbank.org/v2/country/";
 	String countryCode;
 	String urlP3 = "/indicator/IT.NET.USER.ZS?date=";

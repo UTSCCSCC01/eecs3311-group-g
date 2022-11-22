@@ -8,7 +8,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 
-public class getDataSafeH2O {
+public class getDataSafeH2O extends baseDataGetter{
 	String urlP1 = "http://api.worldbank.org/v2/country/";
 	String countryCode;
 	String urlP3 = "/indicator/SH.H2O.SMDW.ZS?date=";
