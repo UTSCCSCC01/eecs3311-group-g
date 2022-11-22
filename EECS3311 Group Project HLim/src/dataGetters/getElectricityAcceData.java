@@ -17,7 +17,7 @@ public class getElectricityAcceData extends baseDataGetter{
 	String urlP6 = "&format=json";
 	String finalUrl;
 	Vector<Double> ElecAccList;
-	Vector<Double> carbonEmList;
+
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -33,7 +33,7 @@ public class getElectricityAcceData extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getElecAccessList(String finalUrl) {
+	public Vector<Double> getElecAccessList(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -80,7 +80,7 @@ public class getElectricityAcceData extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return cumu;
+		return ElecAccList;
 	}
 	
 	public static void main(String[] args) {

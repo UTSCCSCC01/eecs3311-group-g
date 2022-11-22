@@ -16,8 +16,8 @@ public class getDataGDPGrowth extends baseDataGetter{
 	String urlP5;
 	String urlP6 = "&format=json";
 	String finalUrl;
-	Vector<Double> GDPGrowthList;
-	Vector<Double> carbonEmList;
+	static Vector<Double> GDPGrowthList;
+
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -33,7 +33,7 @@ public class getDataGDPGrowth extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getGDPGrowthList(String finalUrl) {
+	public Vector<Double> getGDPGrowthList(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -80,7 +80,7 @@ public class getDataGDPGrowth extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return cumu;
+		return GDPGrowthList;
 	}
 	
 	public static void main(String[] args) {
@@ -94,7 +94,10 @@ public class getDataGDPGrowth extends baseDataGetter{
 		dataFetch.GDPGrowthList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getGDPGrowthList(dataFetch.finalUrl));
+		GDPGrowthList = dataFetch.getGDPGrowthList(dataFetch.finalUrl);
+		for (int i = 0; i < GDPGrowthList.size(); i++) {
+            System.out.println(GDPGrowthList.get(i));
+        }
 		
 	}
 

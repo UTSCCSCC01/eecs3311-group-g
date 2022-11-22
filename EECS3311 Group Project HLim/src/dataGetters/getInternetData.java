@@ -17,7 +17,7 @@ public class getInternetData extends baseDataGetter{
 	String urlP6 = "&format=json";
 	String finalUrl;
 	Vector<Double> internetList;
-	Vector<Double> carbonEmList;
+
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -33,7 +33,7 @@ public class getInternetData extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getInternetUserPerc(String finalUrl) {
+	public Vector<Double> getInternetUserPerc(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -80,7 +80,7 @@ public class getInternetData extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return cumu;
+		return internetList;
 	}
 	
 	public static void main(String[] args) {

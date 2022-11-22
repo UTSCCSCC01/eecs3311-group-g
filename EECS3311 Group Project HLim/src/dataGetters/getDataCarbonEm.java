@@ -17,8 +17,8 @@ public class getDataCarbonEm extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	String finalUrl;
-	Vector<Double> carbonEmList;
+	public String finalUrl;
+	public static Vector<Double> carbonEmList;
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -34,13 +34,13 @@ public class getDataCarbonEm extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getGDPGrowthList(String finalUrl) {
+	public Vector<Double> getcarbonEMList(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
-	int landPerYear=0;
-	double cumuPerYear=0.0;
-	String cumu= "";
+		int landPerYear=0;
+		double cumuPerYear=0.0;
+		String cumu= "";
 		try {
 			URL url=new URL(urlString);
 			HttpURLConnection conn=(HttpURLConnection) url.openConnection();
@@ -81,6 +81,27 @@ public class getDataCarbonEm extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return cumu;
+		return carbonEmList;
 	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		getDataCarbonEm dataFetch = new getDataCarbonEm();
+		dataFetch.setCC("can");
+		dataFetch.setY1("2005");
+		dataFetch.setY2("2008");
+		dataFetch.setFinalUrl();
+		
+		dataFetch.carbonEmList = new Vector<Double>();
+		
+		System.out.println(dataFetch.finalUrl);
+		carbonEmList = dataFetch.getcarbonEMList(dataFetch.finalUrl);
+		for (int i = 0; i < carbonEmList.size(); i++) {
+            System.out.println(carbonEmList.get(i));
+        }
+		
+	}
+
+
 }
+
+

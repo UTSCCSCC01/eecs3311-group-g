@@ -33,7 +33,7 @@ public class getDataSafeH2O extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getsafeH20Perc(String finalUrl) {
+	public Vector<Double> getsafeH20Perc(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -80,7 +80,7 @@ public class getDataSafeH2O extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return cumu;
+		return h2OList;
 	}
 	
 	public static void main(String[] args) {
