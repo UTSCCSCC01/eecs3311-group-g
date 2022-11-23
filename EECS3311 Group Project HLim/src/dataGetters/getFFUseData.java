@@ -32,8 +32,8 @@ public class getFFUseData extends baseDataGetter{
 	public void setY2(String y2) {
 		this.urlP5 = y2;
 	}
-	
-	public Vector<Double> getFFUsage(String finalUrl) {
+	@Override
+	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -94,7 +94,7 @@ public class getFFUseData extends baseDataGetter{
 		dataFetch.FFuseList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getFFUsage(dataFetch.finalUrl));
+		System.out.println(dataFetch.getData(dataFetch.finalUrl));
 		
 	}
 

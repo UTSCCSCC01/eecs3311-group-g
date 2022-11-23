@@ -16,8 +16,7 @@ public class getDataSafeH2O extends baseDataGetter{
 	String urlP5;
 	String urlP6 = "&format=json";
 	String finalUrl;
-	Vector<Double> h2OList;
-	Vector<Double> carbonEmList;
+	Vector<Double> dataRetrievedList;
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -33,7 +32,8 @@ public class getDataSafeH2O extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public Vector<Double> getsafeH20Perc(String finalUrl) {
+	@Override
+	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -67,7 +67,7 @@ public class getDataSafeH2O extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.h2OList.add(landPerArea);
+				this.dataRetrievedList.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("Percent of people able to access clean water %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
@@ -80,7 +80,7 @@ public class getDataSafeH2O extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return h2OList;
+		return dataRetrievedList;
 	}
 	
 	public static void main(String[] args) {
@@ -91,10 +91,10 @@ public class getDataSafeH2O extends baseDataGetter{
 		dataFetch.setY2("2009");
 		dataFetch.setFinalUrl();
 		
-		dataFetch.h2OList = new Vector<Double>();
+		dataFetch.dataRetrievedList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getsafeH20Perc(dataFetch.finalUrl));
+		System.out.println(dataFetch.getData(dataFetch.finalUrl));
 		
 	}
 

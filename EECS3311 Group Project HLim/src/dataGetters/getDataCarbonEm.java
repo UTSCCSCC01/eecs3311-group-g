@@ -18,7 +18,7 @@ public class getDataCarbonEm extends baseDataGetter{
 	String urlP5;
 	String urlP6 = "&format=json";
 	public String finalUrl;
-	public static Vector<Double> carbonEmList;
+	public static Vector<Double> dataRetrievedList;
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -34,7 +34,8 @@ public class getDataCarbonEm extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public Vector<Double> getcarbonEMList(String finalUrl) {
+	@Override
+	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -68,7 +69,7 @@ public class getDataCarbonEm extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.carbonEmList.add(landPerArea);
+				this.dataRetrievedList.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("GDP growth as a percentage %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
@@ -81,7 +82,7 @@ public class getDataCarbonEm extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return carbonEmList;
+		return dataRetrievedList;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -91,12 +92,12 @@ public class getDataCarbonEm extends baseDataGetter{
 		dataFetch.setY2("2008");
 		dataFetch.setFinalUrl();
 		
-		dataFetch.carbonEmList = new Vector<Double>();
+		dataFetch.dataRetrievedList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
-		carbonEmList = dataFetch.getcarbonEMList(dataFetch.finalUrl);
-		for (int i = 0; i < carbonEmList.size(); i++) {
-            System.out.println(carbonEmList.get(i));
+		dataRetrievedList = dataFetch.getData(dataFetch.finalUrl);
+		for (int i = 0; i < dataRetrievedList.size(); i++) {
+            System.out.println(dataRetrievedList.get(i));
         }
 		
 	}

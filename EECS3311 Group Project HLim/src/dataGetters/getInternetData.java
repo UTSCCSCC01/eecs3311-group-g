@@ -15,8 +15,8 @@ public class getInternetData extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	String finalUrl;
-	Vector<Double> internetList;
+	public String finalUrl;
+	public Vector<Double> dataRetrievedList;
 
 	
 	public String setFinalUrl() {
@@ -32,8 +32,8 @@ public class getInternetData extends baseDataGetter{
 	public void setY2(String y2) {
 		this.urlP5 = y2;
 	}
-	
-	public Vector<Double> getInternetUserPerc(String finalUrl) {
+	@Override
+	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -67,7 +67,7 @@ public class getInternetData extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.internetList.add(landPerArea);
+				this.dataRetrievedList.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("Percent of people able to access the interner %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
@@ -80,7 +80,7 @@ public class getInternetData extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return internetList;
+		return dataRetrievedList;
 	}
 	
 	public static void main(String[] args) {
@@ -91,10 +91,10 @@ public class getInternetData extends baseDataGetter{
 		dataFetch.setY2("2012");
 		dataFetch.setFinalUrl();
 		
-		dataFetch.internetList = new Vector<Double>();
+		dataFetch.dataRetrievedList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getInternetUserPerc(dataFetch.finalUrl));
+		System.out.println(dataFetch.getData(dataFetch.finalUrl));
 		
 	}
 

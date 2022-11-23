@@ -16,7 +16,7 @@ public class getDataGDPGrowth extends baseDataGetter{
 	String urlP5;
 	String urlP6 = "&format=json";
 	String finalUrl;
-	static Vector<Double> GDPGrowthList;
+	static Vector<Double> dataRetrievedList;
 
 	
 	public String setFinalUrl() {
@@ -33,7 +33,8 @@ public class getDataGDPGrowth extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public Vector<Double> getGDPGrowthList(String finalUrl) {
+	@Override
+	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -67,7 +68,7 @@ public class getDataGDPGrowth extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.GDPGrowthList.add(landPerArea);
+				this.dataRetrievedList.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("GDP growth as a percentage %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
@@ -80,7 +81,7 @@ public class getDataGDPGrowth extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return GDPGrowthList;
+		return dataRetrievedList;
 	}
 	
 	public static void main(String[] args) {
@@ -91,12 +92,12 @@ public class getDataGDPGrowth extends baseDataGetter{
 		dataFetch.setY2("2008");
 		dataFetch.setFinalUrl();
 		
-		dataFetch.GDPGrowthList = new Vector<Double>();
+		dataFetch.dataRetrievedList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
-		GDPGrowthList = dataFetch.getGDPGrowthList(dataFetch.finalUrl);
-		for (int i = 0; i < GDPGrowthList.size(); i++) {
-            System.out.println(GDPGrowthList.get(i));
+		dataRetrievedList = dataFetch.getData(dataFetch.finalUrl);
+		for (int i = 0; i < dataRetrievedList.size(); i++) {
+            System.out.println(dataRetrievedList.get(i));
         }
 		
 	}
