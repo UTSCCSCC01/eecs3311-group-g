@@ -16,9 +16,9 @@ public class getDataAgriculture extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	String finalUrl;
-	Vector<Double> dataAgriculture;
-	Vector<Double> carbonEmList;
+	public String finalUrl;
+	public Vector<Double> dataRetrievedList;
+	
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -34,7 +34,8 @@ public class getDataAgriculture extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public String getDataAgricPerc(String finalUrl) {
+	@Override
+	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -68,7 +69,7 @@ public class getDataAgriculture extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.dataAgriculture.add(landPerArea);
+				this.dataRetrievedList.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("Percent of people able to access clean water %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
@@ -81,7 +82,7 @@ public class getDataAgriculture extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return cumu;
+		return dataRetrievedList;
 	}
 
 }

@@ -2,19 +2,19 @@ package Analysis;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-
 import dataGetters.*;
-public class popDensVsAgricLand {
+
+public class Acc2ElecVsAcc2Net {
 	
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
-		int analysis1 = 6;
-		int analysis2 = 7;
+		int analysis1 = 4;
+		int analysis2 = 5;
 		
 		Vector<Double> analysis = new Vector<Double>();
 		Vector<Double> list1;
 		Vector<Double> list2;
 		
-		getPopDensData data1 = (getPopDensData) dataFactory.createdataGetter(analysis1);
+		getElectricityAcceData data1 = (getElectricityAcceData) dataFactory.createdataGetter(analysis1);
 		data1.setCC(CC);
 		data1.setY1(y1);
 		data1.setY2(y2);
@@ -22,7 +22,7 @@ public class popDensVsAgricLand {
 		data1.dataRetrievedList = new Vector<Double>();
 		list1 = data1.getData(data1.finalUrl);
 		
-		getDataAgriculture data2 = (getDataAgriculture) dataFactory.createdataGetter(analysis2);
+		getInternetData data2 = (getInternetData) dataFactory.createdataGetter(analysis2);
 		data2.setCC(CC);
 		data2.setY1(y1);
 		data2.setY2(y2);
@@ -32,7 +32,7 @@ public class popDensVsAgricLand {
 
 		
 		for (int i = 0; i < list1.size(); i++) {
-			analysis.add(list2.get(i)/list1.get(i));
+			analysis.add(list1.get(i)/list2.get(i));
 		}
 		return analysis;
 		

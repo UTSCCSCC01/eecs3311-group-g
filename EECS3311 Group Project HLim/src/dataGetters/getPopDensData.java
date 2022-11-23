@@ -16,7 +16,7 @@ public class getPopDensData extends baseDataGetter{
 	String urlP5;
 	String urlP6 = "&format=json";
 	public String finalUrl;
-	public Vector<Double> popDensList;
+	public Vector<Double> dataRetrievedList;
 
 	
 	public String setFinalUrl() {
@@ -33,7 +33,8 @@ public class getPopDensData extends baseDataGetter{
 		this.urlP5 = y2;
 	}
 	
-	public Vector<Double> getPopDens(String finalUrl) {
+	@Override
+	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;
 		double landPerArea=0.0;
@@ -67,7 +68,7 @@ public class getPopDensData extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.popDensList.add(landPerArea);
+				this.dataRetrievedList.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("Number of people per square kilometer %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
@@ -80,7 +81,7 @@ public class getPopDensData extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return popDensList;
+		return dataRetrievedList;
 	}
 	
 	public static void main(String[] args) {
@@ -91,10 +92,10 @@ public class getPopDensData extends baseDataGetter{
 		dataFetch.setY2("2007");
 		dataFetch.setFinalUrl();
 		
-		dataFetch.popDensList = new Vector<Double>();
+		dataFetch.dataRetrievedList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getPopDens(dataFetch.finalUrl));
+		System.out.println(dataFetch.getData(dataFetch.finalUrl));
 		
 	}
 
