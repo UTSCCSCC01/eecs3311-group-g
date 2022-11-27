@@ -15,8 +15,9 @@ public class Login extends JFrame implements ActionListener {
     private JPanel panel;  
     private JLabel userLabel, passLabel;  
     private final JTextField  userField, passField;
-    
-    public Login() {
+    private static  Login instance = new Login();
+     
+    private Login() {
     	userLabel = new JLabel();  
         userLabel.setText("Username");        
         userField = new JTextField(15);
@@ -36,6 +37,14 @@ public class Login extends JFrame implements ActionListener {
         add(panel, BorderLayout.CENTER);
         loginBtn.addActionListener(this);
         setTitle("Login");
+    }
+    
+    //Singleton Instantiation of Login Object, results in only one login object being created.(SEE MAIN FOR HOW TO CALL)
+    public static Login getInstance() {
+        if (instance == null) {
+            instance = new Login();
+        }
+        return instance;
     }
     
     public void actionPerformed(ActionEvent ev) {
@@ -61,7 +70,7 @@ public class Login extends JFrame implements ActionListener {
     }
     
     public static void main(String[] args) {
-    	Login form = new Login();
+    	Login form = getInstance();
     	form.setSize(350, 150);
     	form.setVisible(true);
     }
