@@ -15,9 +15,9 @@ public class getFFUseData extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	String finalUrl;
-	Vector<Double> FFuseList;
-	Vector<Double> carbonEmList;
+	private String finalUrl;
+	public static Vector<Double> dataRetrievedList;
+	
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -32,6 +32,11 @@ public class getFFUseData extends baseDataGetter{
 	public void setY2(String y2) {
 		this.urlP5 = y2;
 	}
+	public String getFinalURL() {
+		String output = this.finalUrl;
+		return output;
+	}
+	
 	@Override
 	public Vector<Double> getData(String finalUrl) {
 		
@@ -67,7 +72,7 @@ public class getFFUseData extends baseDataGetter{
 					landPerArea=0.0;
 				else
 				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.FFuseList.add(landPerArea);
+				this.dataRetrievedList.add(landPerArea);
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("Fossil Fuel used as percentage %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
@@ -80,7 +85,7 @@ public class getFFUseData extends baseDataGetter{
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
-		return FFuseList;
+		return dataRetrievedList;
 	}
 	
 	public static void main(String[] args) {
@@ -91,7 +96,7 @@ public class getFFUseData extends baseDataGetter{
 		dataFetch.setY2("2013");
 		dataFetch.setFinalUrl();
 		
-		dataFetch.FFuseList = new Vector<Double>();
+		dataFetch.dataRetrievedList = new Vector<Double>();
 		
 		System.out.println(dataFetch.finalUrl);
 		System.out.println(dataFetch.getData(dataFetch.finalUrl));
