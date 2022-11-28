@@ -7,8 +7,8 @@ import org.jfree.data.json.impl.JSONArray;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 public class CountryIndicator {
-Vector<Double> carbonEmList;
-Vector<Double> agrLandList;
+public Vector<Double> carbonEmList;
+public Vector<Double> agrLandList;
 	public CountryIndicator() {
 	carbonEmList=new Vector<Double>();
 	agrLandList=new Vector<Double>();
