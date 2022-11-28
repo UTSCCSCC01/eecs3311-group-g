@@ -17,7 +17,7 @@ public class getDataCarbonEm extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	public String finalUrl;
+	private String finalUrl;
 	public static Vector<Double> dataRetrievedList;
 	
 	public String setFinalUrl() {

@@ -9,13 +9,13 @@ import com.google.gson.JsonParser;
 
 
 public class getPopDensData extends baseDataGetter{
-	String urlP1 = "http://api.worldbank.org/v2/country/";
+	public String urlP1 = "http://api.worldbank.org/v2/country/";
 	String countryCode;
 	String urlP3 = "/indicator/EN.POP.DNST?date=";
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	public String finalUrl;
+	private String finalUrl;
 	public Vector<Double> dataRetrievedList;
 
 	
@@ -32,8 +32,12 @@ public class getPopDensData extends baseDataGetter{
 	public void setY2(String y2) {
 		this.urlP5 = y2;
 	}
+	public String getFinalURL() {
+		String output = this.finalUrl;
+		return output;
+	}
 	
-	@Override
+	
 	public Vector<Double> getData(String finalUrl) {
 		
 		String urlString = finalUrl;

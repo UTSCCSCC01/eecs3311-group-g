@@ -15,8 +15,8 @@ public class getDataSafeH2O extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	String finalUrl;
-	Vector<Double> dataRetrievedList;
+	private String finalUrl;
+	public Vector<Double> dataRetrievedList;
 	
 	public String setFinalUrl() {
 		this.finalUrl = urlP1 + this.countryCode + urlP3 + this.urlP4 + ":" + this.urlP5 + urlP6;
@@ -30,6 +30,10 @@ public class getDataSafeH2O extends baseDataGetter{
 	}
 	public void setY2(String y2) {
 		this.urlP5 = y2;
+	}
+	public String getFinalURL() {
+		String output = this.finalUrl;
+		return output;
 	}
 	
 	@Override
