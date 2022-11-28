@@ -8,7 +8,7 @@ import dataGetters.getFFUseData;
 import dataGetters.getPopDensData;
 import dataGetters.getDataCarbonEm;
 
-public class CarbonEmVsFFUse {
+public class CarbonEmVsFFUse implements MethodStrategy{
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC) {
 		String x = "Population density";
 		String y = "% Agricultural Land";
@@ -54,6 +54,13 @@ public class CarbonEmVsFFUse {
 		for (int i = 0; i < output.size(); i++) {
 			System.out.println(output.get(i));
 		}
+	}
+
+	@Override
+	public void methodAnalysis(String y1, String y2, String CC) {
+		CarbonEmVsFFUse.performAnalysis(y1, y2, CC);
+		// TODO Auto-generated method stub
+		
 	}
 
 }

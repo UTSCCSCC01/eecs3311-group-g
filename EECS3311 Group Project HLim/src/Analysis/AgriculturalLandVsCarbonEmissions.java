@@ -7,7 +7,8 @@ import dataGetters.getDataAgriculture;
 import dataGetters.getDataCarbonEm;
 import dataGetters.*;
 
-public class AgriculturalLandVsCarbonEmissions {
+public class AgriculturalLandVsCarbonEmissions implements MethodStrategy{
+	
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
 	int analysis1 = 8;
 	int analysis2 = 7;
@@ -51,6 +52,12 @@ public static void main(String[] args) {
 	for(int i = 0; i < output.size(); i++) {
 		System.out.println(output.get(i));
 	}
+}
+@Override
+public void methodAnalysis(String y1, String y2, String CC) {
+	AgriculturalLandVsCarbonEmissions.performAnalysis(y1, y2, CC);
+	// TODO Auto-generated method stub
+	
 }
 
 }

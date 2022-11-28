@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Vector;
 
 import dataGetters.*;
-public class popDensVsAgricLand {
+public class popDensVsAgricLand implements MethodStrategy{
 	
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
 		int analysis1 = 6;
@@ -48,6 +48,11 @@ public class popDensVsAgricLand {
 		for(int i = 0; i < output.size(); i++) {
 			System.out.println(output.get(i));
 		}
+	}
+	@Override
+	public void methodAnalysis(String y1, String y2, String CC) {
+		popDensVsAgricLand.performAnalysis(y1, y2, CC);
+		
 	}
 
 }

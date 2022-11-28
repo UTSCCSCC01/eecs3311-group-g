@@ -33,6 +33,10 @@ public class getDataCarbonEm extends baseDataGetter{
 	public void setY2(String y2) {
 		this.urlP5 = y2;
 	}
+	public String getFinalURL() {
+		String output = this.finalUrl;
+		return output;
+	}
 	
 	@Override
 	public Vector<Double> getData(String finalUrl) {

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Vector;
 import dataGetters.*;
 
-public class Acc2ElecVsAcc2Net {
-	
+public class Acc2ElecVsAcc2Net implements MethodStrategy{
+	//public static perform
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
 		int analysis1 = 4;
 		int analysis2 = 5;
@@ -48,6 +48,12 @@ public class Acc2ElecVsAcc2Net {
 		for(int i = 0; i < output.size(); i++) {
 			System.out.println(output.get(i));
 		}
+	}
+	@Override
+	public static void methodAnalysis(String y1, String y2, String CC) {
+		Acc2ElecVsAcc2Net.performAnalysis(y1,y2,CC);
+		// TODO Auto-generated method stub
+		
 	}
 
 }
