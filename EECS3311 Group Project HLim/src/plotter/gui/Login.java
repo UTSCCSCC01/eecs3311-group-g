@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import plotter.auth.Auth;
+import plotter.plotter.OpenState;
 
 public class Login extends JFrame implements ActionListener {
 	//initialize button, panel, label, and text field  
@@ -59,9 +60,19 @@ public class Login extends JFrame implements ActionListener {
 	              
 	            JLabel wel_label = new JLabel("Welcome: "+ username);
 	            setVisible(false);
-	            stats.getContentPane().add(wel_label);  
+	            stats.getContentPane().add(wel_label);    
+	            wait(5000);
+	            //Call OpenState doAction in "analyzing" state
+	            OpenState state = OpenState.getInstance();
+	            state.setState("analyzing");
+	            state.doAction();
+	            System.exit(0);
 			} else {
 				JOptionPane.showMessageDialog(null, "Invalid username and password combo.");
+				//Call OpenState doAction in either "login" or "OFF" state
+				OpenState state = OpenState.getInstance();
+	            state.setState("OFF");
+	            state.doAction();
 				System.exit(0);
 			}
 		} catch (Exception e) {
