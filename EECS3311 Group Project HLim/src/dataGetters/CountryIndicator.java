@@ -67,7 +67,7 @@ public Vector<Double> agrLandList;
 		String p= "EN.ATM.CO2E.PC";
 		String q="EN.ATM.METH.PC";//not working
 		String urlString = 
-				String.format("http://api.worldbank.org/v2/country/%s/indicator/EN.ATM.CO2E.PC?date=%d:%d&format=json", country,p,startYear,endYear);
+				String.format("http://api.worldbank.org/v2/country/%1$s/indicator/%2$s?date=%3$d:%4$d&format=json", country,p,startYear,endYear);
 		double carbonEmPerYear=0.0;
 	int carbonPerYear=0;
 	double cumuPerYear=0.0;
