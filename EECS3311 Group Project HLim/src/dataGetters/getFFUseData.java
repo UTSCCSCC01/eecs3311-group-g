@@ -63,7 +63,8 @@ public class getFFUseData extends baseDataGetter{
 			int size=jsonArray.size();
 			//get the size of results
 			int sizeofResults=jsonArray.get(1).getAsJsonArray().size();
-			if(Integer.parseInt(this.urlP4)<Integer.parseInt(this.urlP5))
+			if(Integer.parseInt(this.urlP4)<Integer.parseInt(this.urlP5)) {
+				this.dataRetrievedList = new Vector<Double>();
 			for(int i=0;i<sizeofResults;i++) {
 				landPerYear= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
 				
@@ -81,6 +82,7 @@ public class getFFUseData extends baseDataGetter{
 			cumu=cumu+String.format("Average npercent usage of Fossil fuel %.2f\n",cumuPerYear/sizeofResults);
 			//System.out.printf("Average land per Area is %.2f", cumuPerYear/sizeofResults);
 		}
+			}
 		}
 		catch(IOException e) {
 			// excception is catched if something goes wrong

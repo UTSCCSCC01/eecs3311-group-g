@@ -64,29 +64,30 @@ public class getDataAgriculture extends baseDataGetter{
 			int size=jsonArray.size();
 			//get the size of results
 			int sizeofResults=jsonArray.get(1).getAsJsonArray().size();
-			if(Integer.parseInt(this.urlP4)<Integer.parseInt(this.urlP5))
-			for(int i=0;i<sizeofResults;i++) {
-				landPerYear= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
-				
-				boolean correct= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull();
-				if(correct) 
-					landPerArea=0.0;
-				else
-				landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
-				this.dataRetrievedList.add(landPerArea);
-				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
-		 cumu= cumu+String.format("Percent of people able to access clean water %.2f for the year %d\n", landPerArea, landPerYear);
-				cumuPerYear=cumuPerYear+landPerArea;
+			if(Integer.parseInt(this.urlP4)<Integer.parseInt(this.urlP5)) {
+				this.dataRetrievedList = new Vector<Double>();
+				for(int i=0;i<sizeofResults;i++) {
+					landPerYear= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
+
+					boolean correct= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull();
+					if(correct) 
+						landPerArea=0.0;
+					else
+						landPerArea= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsDouble();
+					this.dataRetrievedList.add(landPerArea);
+					//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
+					cumu= cumu+String.format("Percent of people able to access clean water %.2f for the year %d\n", landPerArea, landPerYear);
+					cumuPerYear=cumuPerYear+landPerArea;
+				}
+				//System.out.println("size of results is  "+sizeofResults);
+				cumu=cumu+String.format("Average number of people with accesss to clean water %.2f\n",cumuPerYear/sizeofResults);
+				//System.out.printf("Average land per Area is %.2f", cumuPerYear/sizeofResults);
 			}
-			//System.out.println("size of results is  "+sizeofResults);
-			cumu=cumu+String.format("Average number of people with accesss to clean water %.2f\n",cumuPerYear/sizeofResults);
-			//System.out.printf("Average land per Area is %.2f", cumuPerYear/sizeofResults);
-		}
+			}
 		}
 		catch(IOException e) {
 			// excception is catched if something goes wrong
 		}
 		return dataRetrievedList;
 	}
-
 }

@@ -64,7 +64,8 @@ public class getDataCarbonEm extends baseDataGetter{
 			int size=jsonArray.size();
 			//get the size of results
 			int sizeofResults=jsonArray.get(1).getAsJsonArray().size();
-			if(Integer.parseInt(this.urlP4)<Integer.parseInt(this.urlP5))
+			if(Integer.parseInt(this.urlP4)<Integer.parseInt(this.urlP5)) {
+			this.dataRetrievedList = new Vector<Double>();	
 			for(int i=0;i<sizeofResults;i++) {
 				landPerYear= jsonArray.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
 				
@@ -77,6 +78,7 @@ public class getDataCarbonEm extends baseDataGetter{
 				//System.out.printf("Land per Area is %.2f for the year %d\n", landPerArea, landPerYear);
 		 cumu= cumu+String.format("GDP growth as a percentage %.2f for the year %d\n", landPerArea, landPerYear);
 				cumuPerYear=cumuPerYear+landPerArea;
+			}
 			}
 			//System.out.println("size of results is  "+sizeofResults);
 			cumu=cumu+String.format("Average GDP growth %.2f\n",cumuPerYear/sizeofResults);
