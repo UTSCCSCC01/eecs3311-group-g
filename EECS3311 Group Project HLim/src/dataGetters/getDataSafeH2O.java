@@ -87,19 +87,5 @@ public class getDataSafeH2O extends baseDataGetter{
 		return dataRetrievedList;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getDataSafeH2O dataFetch = new getDataSafeH2O();
-		dataFetch.setCC("can");
-		dataFetch.setY1("2005");
-		dataFetch.setY2("2009");
-		dataFetch.setFinalUrl();
-		
-		dataFetch.dataRetrievedList = new Vector<Double>();
-		
-		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getData(dataFetch.finalUrl));
-		
-	}
 
 }

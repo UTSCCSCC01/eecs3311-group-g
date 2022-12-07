@@ -88,23 +88,7 @@ public class getDataCarbonEm extends baseDataGetter{
 		}
 		return dataRetrievedList;
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getDataCarbonEm dataFetch = new getDataCarbonEm();
-		dataFetch.setCC("can");
-		dataFetch.setY1("2005");
-		dataFetch.setY2("2008");
-		dataFetch.setFinalUrl();
-		
-		dataFetch.dataRetrievedList = new Vector<Double>();
-		
-		System.out.println(dataFetch.finalUrl);
-		dataRetrievedList = dataFetch.getData(dataFetch.finalUrl);
-		for (int i = 0; i < dataRetrievedList.size(); i++) {
-            System.out.println(dataRetrievedList.get(i));
-        }
-		
-	}
+
 
 
 }

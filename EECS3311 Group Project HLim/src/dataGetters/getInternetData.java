@@ -87,19 +87,4 @@ public class getInternetData extends baseDataGetter{
 		return dataRetrievedList;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getInternetData dataFetch = new getInternetData();
-		dataFetch.setCC("can");
-		dataFetch.setY1("2006");
-		dataFetch.setY2("2012");
-		dataFetch.setFinalUrl();
-		
-		dataFetch.dataRetrievedList = new Vector<Double>();
-		
-		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getData(dataFetch.finalUrl));
-		
-	}
-
 }

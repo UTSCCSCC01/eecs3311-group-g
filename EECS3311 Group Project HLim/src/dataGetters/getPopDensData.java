@@ -88,19 +88,4 @@ public class getPopDensData extends baseDataGetter{
 		return dataRetrievedList;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getPopDensData dataFetch = new getPopDensData();
-		dataFetch.setCC("can");
-		dataFetch.setY1("2004");
-		dataFetch.setY2("2007");
-		dataFetch.setFinalUrl();
-		
-		dataFetch.dataRetrievedList = new Vector<Double>();
-		
-		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getData(dataFetch.finalUrl));
-		
-	}
-
 }

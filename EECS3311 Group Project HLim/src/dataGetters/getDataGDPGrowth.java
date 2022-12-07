@@ -16,7 +16,7 @@ public class getDataGDPGrowth extends baseDataGetter{
 	String urlP5;
 	String urlP6 = "&format=json";
 	private String finalUrl;
-	public static Vector<Double> dataRetrievedList;
+	public static Vector<Double> dataRetrievedList = new Vector<Double>();
 
 	
 	public String setFinalUrl() {
@@ -88,22 +88,5 @@ public class getDataGDPGrowth extends baseDataGetter{
 		return dataRetrievedList;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getDataGDPGrowth dataFetch = new getDataGDPGrowth();
-		dataFetch.setCC("can");
-		dataFetch.setY1("2005");
-		dataFetch.setY2("2008");
-		dataFetch.setFinalUrl();
-		
-		dataFetch.dataRetrievedList = new Vector<Double>();
-		
-		System.out.println(dataFetch.finalUrl);
-		dataRetrievedList = dataFetch.getData(dataFetch.finalUrl);
-		for (int i = 0; i < dataRetrievedList.size(); i++) {
-            System.out.println(dataRetrievedList.get(i));
-        }
-		
-	}
 
 }

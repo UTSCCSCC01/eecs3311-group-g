@@ -88,19 +88,6 @@ public class getElectricityAcceData extends baseDataGetter{
 		return dataRetrievedList;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		getElectricityAcceData dataFetch = new getElectricityAcceData();
-		dataFetch.setCC("can");
-		dataFetch.setY1("2005");
-		dataFetch.setY2("2008");
-		dataFetch.setFinalUrl();
-		
-		dataFetch.dataRetrievedList = new Vector<Double>();
-		
-		System.out.println(dataFetch.finalUrl);
-		System.out.println(dataFetch.getData(dataFetch.finalUrl));
-		
-	}
+
 
 }
