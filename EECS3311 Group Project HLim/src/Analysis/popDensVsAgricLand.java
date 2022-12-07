@@ -1,5 +1,6 @@
 package Analysis;
 import java.util.Iterator;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -49,6 +50,7 @@ public class popDensVsAgricLand implements MethodStrategy{
 			System.out.println(output.get(i));
 		}
 	}
+	//Strategy design Pattern
 	@Override
 	public void methodAnalysis(String y1, String y2, String CC) {
 		popDensVsAgricLand.performAnalysis(y1, y2, CC);

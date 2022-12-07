@@ -50,7 +50,7 @@ public class Acc2ElecVsAcc2Net implements MethodStrategy{
 		}
 	}
 	@Override
-	public static void methodAnalysis(String y1, String y2, String CC) {
+	public void methodAnalysis(String y1, String y2, String CC) {
 		Acc2ElecVsAcc2Net.performAnalysis(y1,y2,CC);
 		// TODO Auto-generated method stub
 		
