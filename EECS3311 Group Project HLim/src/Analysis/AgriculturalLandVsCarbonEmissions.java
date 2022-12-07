@@ -1,5 +1,6 @@
 package Analysis;
 
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import dataGetters.dataFactory;
@@ -7,10 +8,11 @@ import dataGetters.getDataAgriculture;
 import dataGetters.getDataCarbonEm;
 import dataGetters.*;
 
-public class AgriculturalLandVsCarbonEmissions {
+public class AgriculturalLandVsCarbonEmissions implements MethodStrategy{
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
 	int analysis1 = 8;
 	int analysis2 = 7;
+	final DecimalFormat dec = new DecimalFormat("0.00");
 	
 	Vector<Double> analysis = new Vector<Double>();
 	Vector<Double> list1;
@@ -35,22 +37,15 @@ public class AgriculturalLandVsCarbonEmissions {
 	
 	
 	for (int i = (list1.size()-1); i >= 0 ; i--) {
-		analysis.add(list2.get(i)/list1.get(i));
+		analysis.add(Double.parseDouble(dec.format(list1.get(i)/list2.get(i))));
 	}
 	return analysis;
 	
-	
 }
-public static void main(String[] args) {
-	// TODO Auto-generated method stub
-	String year1 = "2005";
-	String year2 = "2013";
-	String CC = "can";
-	Vector<Double> output = performAnalysis(year1, year2, CC);
-	
-	for(int i = 0; i < output.size(); i++) {
-		System.out.println(output.get(i));
+	public void methodAnalysis(String y1, String y2, String CC) {
+		AgriculturalLandVsCarbonEmissions.performAnalysis(y1, y2, CC);
+
 	}
-}
+
 
 }

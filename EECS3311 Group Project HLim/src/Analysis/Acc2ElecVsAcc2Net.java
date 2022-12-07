@@ -1,12 +1,14 @@
 package Analysis;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import dataGetters.*;
 
-public class Acc2ElecVsAcc2Net {
-	
+public class Acc2ElecVsAcc2Net implements MethodStrategy{
+	//public static perform
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
+		final DecimalFormat dec = new DecimalFormat("0.00");
 		int analysis1 = 4;
 		int analysis2 = 5;
 		
@@ -32,31 +34,14 @@ public class Acc2ElecVsAcc2Net {
 
 		
 		for (int i = 0; i < list1.size(); i++) {
-			analysis.add(list1.get(i)/list2.get(i));
+			analysis.add(Double. parseDouble(dec.format(list1.get(i)/list2.get(i))));
 		}
 		return analysis;
-		
-		
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String year1 = "2004";
-		String year2 = "2010";
-		String CC = "can";
-		Vector<Double> output = performAnalysis(year1, year2, CC);
-		
-		for(int i = 0; i < output.size(); i++) {
-			System.out.println(output.get(i));
-		}
-	}
-<<<<<<< HEAD
-	@Override
+	
 	public void methodAnalysis(String y1, String y2, String CC) {
-		Acc2ElecVsAcc2Net.performAnalysis(y1,y2,CC);
-		// TODO Auto-generated method stub
-		
+		Acc2ElecVsAcc2Net.performAnalysis(y1, y2, CC);
+
 	}
-=======
->>>>>>> 2b3db633d7741e78431f6bd75169eecba98d7c70
 
 }

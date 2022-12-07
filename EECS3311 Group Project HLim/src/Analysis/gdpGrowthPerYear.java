@@ -1,14 +1,16 @@
 package Analysis;
 
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import dataGetters.dataFactory;
 import dataGetters.getDataGDPGrowth;
 
 
-public class gdpGrowthPerYear {
+public class gdpGrowthPerYear implements MethodStrategy{
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
 	Vector<Double> analysis = new Vector<Double>();
+	final DecimalFormat dec = new DecimalFormat("0.00");
 	int analysis1 = 1;
 	getDataGDPGrowth data1 = (getDataGDPGrowth) dataFactory.createdataGetter(analysis1);
 	data1.setCC(CC);
@@ -18,18 +20,16 @@ public class gdpGrowthPerYear {
 	data1.dataRetrievedList = new Vector<Double>();
 	analysis = data1.getData(data1.getFinalURL());
 	
+	for(int i = 0; i < analysis.size(); i++) {
+		double temp = Double.parseDouble(dec.format(analysis.get(i)));
+		analysis.set(i, temp);
+	}
 	return analysis;
 	}
-	public static void main(String[] args) {
+
+	public void methodAnalysis(String y1, String y2, String CC) {
 		// TODO Auto-generated method stub
-		String year1 = "2004";
-		String year2 = "2010";
-		String CC = "can";
-		Vector<Double> output = performAnalysis(year1, year2, CC);
 		
-		for(int i = 0; i < output.size(); i++) {
-			System.out.println(output.get(i));
-		}
 	}
 
 }

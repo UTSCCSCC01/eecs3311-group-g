@@ -1,13 +1,16 @@
 package Analysis;
 
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import dataGetters.dataFactory;
 import dataGetters.getDataCarbonEm;
 import dataGetters.getDataSafeH2O;
 
-public class accessToSafeWater {
+public class accessToSafeWater implements MethodStrategy{
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
+	final DecimalFormat dec = new DecimalFormat("0.00");
+
 	Vector<Double> analysis = new Vector<Double>();
 	getDataSafeH2O data1 = (getDataSafeH2O) dataFactory.createdataGetter(2);
 	data1.setCC(CC);
@@ -17,18 +20,18 @@ public class accessToSafeWater {
 	data1.dataRetrievedList = new Vector<Double>();
 	analysis = data1.getData(data1.getFinalURL());
 	
+	for(int i = 0; i < analysis.size(); i++) {
+		double temp = Double.parseDouble(dec.format(analysis.get(i)));
+		analysis.set(i, temp);
+	}
 	return analysis;
 	}
-	public static void main(String[] args) {
+
+
+	public void methodAnalysis(String y1, String y2, String CC) {
 		// TODO Auto-generated method stub
-		String year1 = "2004";
-		String year2 = "2010";
-		String CC = "bra";
-		Vector<Double> output = performAnalysis(year1, year2, CC);
-		
-		for(int i = 0; i < output.size(); i++) {
-			System.out.println(output.get(i));
-		}
+		accessToSafeWater.performAnalysis(y1, y2, CC);
 	}
+	
 
 }

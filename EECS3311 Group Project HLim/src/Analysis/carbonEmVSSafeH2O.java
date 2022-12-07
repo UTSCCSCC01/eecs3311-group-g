@@ -1,5 +1,6 @@
 package Analysis;
 
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import dataGetters.dataFactory;
@@ -9,12 +10,13 @@ import dataGetters.getPopDensData;
 import dataGetters.getDataCarbonEm;
 import dataGetters.getDataSafeH2O;
 
-public class carbonEmVSSafeH2O {
+public class carbonEmVSSafeH2O implements MethodStrategy{
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC) {
 		String x = "Population density";
 		String y = "% Agricultural Land";
 			int analysis1 = 8;
 			int analysis2 = 2;
+			final DecimalFormat dec = new DecimalFormat("0.00");
 			
 			Vector<Double> analysis = new Vector<Double>();
 			Vector<Double> list1;
@@ -38,23 +40,15 @@ public class carbonEmVSSafeH2O {
 
 			
 			for (int i = (list1.size()-1); i >= 0 ; i--) {
-				analysis.add(list2.get(i)/list1.get(i));
+				analysis.add(Double. parseDouble(dec.format(list2.get(i)/list1.get(i))));
 			}
-			return analysis;
-			
-			
+			return analysis;	
 	}
+	
+	
+	public void methodAnalysis(String y1, String y2, String CC) {
+		carbonEmVSSafeH2O.performAnalysis(y1, y2, CC);
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String year1 = "2005";
-		String year2 = "2013";
-		String CC = "can";
-		Vector<Double> output = performAnalysis(year1, year2, CC);
-
-		for (int i = 0; i < output.size(); i++) {
-			System.out.println(output.get(i));
-		}
 	}
 
 }
