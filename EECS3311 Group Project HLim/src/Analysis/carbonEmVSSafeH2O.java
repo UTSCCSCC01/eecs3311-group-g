@@ -7,13 +7,14 @@ import dataGetters.getDataAgriculture;
 import dataGetters.getFFUseData;
 import dataGetters.getPopDensData;
 import dataGetters.getDataCarbonEm;
+import dataGetters.getDataSafeH2O;
 
-public class CarbonEmVsFFUse {
+public class carbonEmVSSafeH2O {
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC) {
 		String x = "Population density";
 		String y = "% Agricultural Land";
 			int analysis1 = 8;
-			int analysis2 = 3;
+			int analysis2 = 2;
 			
 			Vector<Double> analysis = new Vector<Double>();
 			Vector<Double> list1;
@@ -27,7 +28,7 @@ public class CarbonEmVsFFUse {
 			data1.dataRetrievedList = new Vector<Double>();
 			list1 = data1.getData(data1.getFinalURL());
 			
-			getFFUseData data2 = (getFFUseData) dataFactory.createdataGetter(analysis2);
+			getDataSafeH2O data2 = (getDataSafeH2O) dataFactory.createdataGetter(analysis2);
 			data2.setCC(CC);
 			data2.setY1(y1);
 			data2.setY2(y2);
@@ -36,7 +37,7 @@ public class CarbonEmVsFFUse {
 			list2 = data2.getData(data2.getFinalURL());
 
 			
-			for (int i = 0; i < list1.size(); i++) {
+			for (int i = (list1.size()-1); i >= 0 ; i--) {
 				analysis.add(list2.get(i)/list1.get(i));
 			}
 			return analysis;

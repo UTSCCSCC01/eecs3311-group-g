@@ -36,10 +36,6 @@ public class getFFUseData extends baseDataGetter{
 		String output = this.finalUrl;
 		return output;
 	}
-//	public String getFinalURL() {
-//		String output = this.finalUrl;
-//		return output;
-//	}
 	
 	@Override
 	public Vector<Double> getData(String finalUrl) {

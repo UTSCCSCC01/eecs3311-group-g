@@ -16,7 +16,7 @@ public class getDataAgriculture extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	public String finalUrl;
+	private String finalUrl;
 	public Vector<Double> dataRetrievedList;
 	
 	
@@ -32,6 +32,10 @@ public class getDataAgriculture extends baseDataGetter{
 	}
 	public void setY2(String y2) {
 		this.urlP5 = y2;
+	}
+	public String getFinalURL() {
+		String output = this.finalUrl;
+		return output;
 	}
 	
 	@Override

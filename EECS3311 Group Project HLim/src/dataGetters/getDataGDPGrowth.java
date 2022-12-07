@@ -15,8 +15,8 @@ public class getDataGDPGrowth extends baseDataGetter{
 	String urlP4;
 	String urlP5;
 	String urlP6 = "&format=json";
-	String finalUrl;
-	static Vector<Double> dataRetrievedList;
+	private String finalUrl;
+	public static Vector<Double> dataRetrievedList;
 
 	
 	public String setFinalUrl() {
@@ -31,6 +31,10 @@ public class getDataGDPGrowth extends baseDataGetter{
 	}
 	public void setY2(String y2) {
 		this.urlP5 = y2;
+	}
+	public String getFinalURL() {
+		String output = this.finalUrl;
+		return output;
 	}
 	
 	@Override

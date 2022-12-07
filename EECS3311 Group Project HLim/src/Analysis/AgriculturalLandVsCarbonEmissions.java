@@ -7,8 +7,7 @@ import dataGetters.getDataAgriculture;
 import dataGetters.getDataCarbonEm;
 import dataGetters.*;
 
-public class AgriculturalLandVsCarbonEmissions implements MethodStrategy{
-	
+public class AgriculturalLandVsCarbonEmissions {
 	public static Vector<Double> performAnalysis(String y1, String y2, String CC){
 	int analysis1 = 8;
 	int analysis2 = 7;
@@ -24,7 +23,7 @@ public class AgriculturalLandVsCarbonEmissions implements MethodStrategy{
 	data1.setY2(y2);
 	data1.setFinalUrl();
 	data1.dataRetrievedList = new Vector<Double>();
-	list1 = data1.getData(data1.finalUrl);
+	list1 = data1.getData(data1.getFinalURL());
 
 	getDataCarbonEm data2 = (getDataCarbonEm) dataFactory.createdataGetter(analysis1);
 	data2.setCC(CC);
@@ -32,10 +31,10 @@ public class AgriculturalLandVsCarbonEmissions implements MethodStrategy{
 	data2.setY2(y2);
 	data2.setFinalUrl();
 	data2.dataRetrievedList = new Vector<Double>();
-	list2 = data2.getData(data2.finalUrl);
+	list2 = data2.getData(data2.getFinalURL());
 	
 	
-	for (int i = 0; i < list1.size(); i++) {
+	for (int i = (list1.size()-1); i >= 0 ; i--) {
 		analysis.add(list2.get(i)/list1.get(i));
 	}
 	return analysis;
@@ -52,12 +51,6 @@ public static void main(String[] args) {
 	for(int i = 0; i < output.size(); i++) {
 		System.out.println(output.get(i));
 	}
-}
-@Override
-public void methodAnalysis(String y1, String y2, String CC) {
-	AgriculturalLandVsCarbonEmissions.performAnalysis(y1, y2, CC);
-	// TODO Auto-generated method stub
-	
 }
 
 }
