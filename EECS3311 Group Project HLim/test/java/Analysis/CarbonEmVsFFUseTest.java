@@ -1,30 +1,16 @@
 package Analysis;
 
-import java.util.Vector;
-import Analysis.Acc2ElecVsAcc2Net;
-import org.junit.Test;
-
-import junit.framework.TestCase;
 import junit.framework.TestCase;
 import java.util.*;
 
 import org.junit.Test;
 
 import dataGetters.*;
-public class Acc2ElecVsAcc2NetTest extends TestCase {
+import static org.junit.Assert.*;
 
+public class CarbonEmVsFFUseTest {
 
-
-//Map<String,String> countryCode= new HashMap<String,String>();
-//	
-//    countryCode.put("can", "Canada");
-//	countryCode.put("bra", "Brazil");
-//	countryCode.put("chn", "Canada");
-//	countryCode.put("can", "Canada");
-//	countryCode.put("can", "Canada");
-
-	
-	@Test (timeout=30000)
+@Test (timeout=30000)
 	
 	public void test_1() {
 	String year1 = "2004";
@@ -33,7 +19,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1);
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -48,7 +34,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1);
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -62,7 +48,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1);
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -76,7 +62,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1);
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -90,7 +76,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1);
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -106,7 +92,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("String Length of country abbrievation is not equal to 3 ", CC.length()==3);
 	
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1 );
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -120,7 +106,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1 );
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -134,7 +120,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1 );
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -148,7 +134,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1 );
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
@@ -162,7 +148,7 @@ public class Acc2ElecVsAcc2NetTest extends TestCase {
 	assertTrue("Year1 is greater than year2 comparing in terms of integer", Integer.parseInt(year2)>=Integer.parseInt(year1));
 	assertTrue(" String Length of country abbrievation is not equal to 3 ", CC.length()==3);
 	assertTrue("year1 is greater than year2", year1.compareTo(year2)<=1 );
-	Acc2ElecVsAcc2Net compareIndic =new Acc2ElecVsAcc2Net();
+	CarbonEmVsFFUse compareIndic =new CarbonEmVsFFUse();
 	Vector<Double> dataList= compareIndic.performAnalysis(year1, year2, CC);
 	int size= Integer.parseInt(year2)-Integer.parseInt(year1)+1;
 	assertEquals("Sizes are not equal", size, dataList.size());
